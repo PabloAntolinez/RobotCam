@@ -97,10 +97,10 @@ def update_robot(state=None):
 
 if __name__ == '__main__':
     for i in range(4):
-	pz.setAllPixels(255,255,255)
+		pz.setAllPixels(255,255,255)
     	time.sleep(0.05)
-	pz.setAllPixels(0,0,0)
-	time.sleep(0.05)
+		pz.setAllPixels(0,0,0)
+		time.sleep(0.05)
     app.run(host='0.0.0.0', port = 8000, threaded=True)
 
 
