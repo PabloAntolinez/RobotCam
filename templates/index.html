@@ -1,0 +1,148 @@
+<html>
+  <head>
+    <title>Robot Cam</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+<meta name="viewport" content="height=device.height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<style type="text/css">
+.btn-command
+{
+background-repeat: no-repeat; 
+background-position: center;
+background-size:cover;
+border : none;
+border-radius : 5px;
+width:100%;
+height:100%;
+padding-top:100%; 
+margin-bottom:5px;
+}
+
+img
+{
+-webkit-user-select:none;
+-o-user-select: none;
+user-select: none;
+-webkit-touch-callout:none;
+}
+.row
+{
+min-height:80px ;
+height: 10vh;
+max-width:800px;
+}
+</style>
+  </head>
+        
+  <body>
+    
+    <img src="{{ url_for('video_feed') }} "style="width:100vw; max-width:1080px; max-height:50vh ; display:block; margin-bottom:5px ; ">
+<div class="container" style="max-width:1080px; max-height:50vh">
+	<div class="row" >
+		<div class="col-xs-4" >
+			<button id='up' name="direction" value="up" class="btn-command"  style=" background-image: url('/static/img/up.svg'); ">
+			</button>	
+		</div>	
+		<div class="col-xs-4" >
+			<button id='forward' name="direction" value="forward" class="btn-command"  style=" background-image: url('/static/img/forward.svg');">
+			</button>
+		</div>
+		<div class="col-xs-4">
+			<button id='light' name="light" value="up" class="btn-command"  style=" background-image: url('/static/img/light.svg'); ">
+			</button>
+		</div>		
+	</div>
+
+	<div class="row" >
+		<div class="col-xs-4" >
+
+			<button id='left' name="direction" value="left" class="btn-command"  style=" background-image: url('/static/img/left.svg'); ">
+			</button>	
+		</div>	
+		<div class="col-xs-4" >
+			<button id='stop' name="direction" value="stop" class="btn-command"  style=" background-image: url('/static/img/stop.svg'); ">
+			</button>
+		</div>	
+		<div class="col-xs-4" >	
+			<button id='right' name="direction" value="right" class="btn-command"  style=" background-image: url('/static/img/right.svg'); ">
+			</button>
+		</div>
+	</div>
+	<div class="row" >	
+		<div class="col-xs-4" >
+			<button id='down' name="direction" value="down" class="btn-command"  style=" background-image: url('/static/img/down.svg'); ">
+			</button>					
+		</div>	
+		<div class="col-xs-4" >
+			<button id='reverse' name="direction" value="reverse" class="btn-command"  style=" background-image: url('/static/img/reverse.svg'); ">
+			</button>
+		</div>	
+		<div class="col-xs-4" >
+			<button id='center' name="direction" value="center" class="btn-command"  style=" background-image: url('/static/img/center.svg'); ">
+			</button>
+		</div>
+	</div>
+</div>
+	        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        	<script>
+                 var flag = false;
+          	$(document).ready(function() {
+           	 $('#left').bind ( 'mousedown touchstart', function() 
+			{
+              	 		$.post('/robot/Left');
+            		})
+            	 $('#left').bind ( 'mouseup touchend', function() 
+			{
+              	 		$.post('/robot/Stop');
+            		})
+           	 $('#forward').bind ( 'mousedown touchstart', function() 
+			{
+              	 		$.post('/robot/Forward');
+            		})
+            	 $('#forward').bind ( 'mouseup touchend', function() 
+			{
+              	 		$.post('/robot/Stop');
+            		})
+           	 $('#right').bind ( 'mousedown touchstart', function() 
+			{
+              	 		$.post('/robot/Right');
+            		})
+            	 $('#right').bind ( 'mouseup touchend', function() 
+			{
+              	 		$.post('/robot/Stop');
+            		})
+
+           	 $('#reverse').bind ( 'mousedown touchstart', function() 
+			{
+              	 		$.post('/robot/Reverse');
+            		})
+            	 $('#reverse').bind ( 'mouseup touchend', function() 
+			{
+              	 		$.post('/robot/Stop');
+            		})
+
+            	$('#stop').click(function() {
+              	 $.post('/5');
+            	});
+
+            	 $('#up').bind ( 'mousedown touchstart', function() 
+			{
+              	 		$.post('/robot/Up');
+            		})
+   
+            	 $('#down').click(function() {
+              	 $.post('/robot/Down');
+            	})
+            	 $('#light').click(function() {
+              	 $.post('/robot/Light');
+            	})
+            	 $('#center').click(function() {
+              	 $.post('/robot/Center');
+            	})
+          	});
+        	</script>
+
+
+
+  </body>
+</html>
