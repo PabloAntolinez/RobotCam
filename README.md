@@ -11,6 +11,5 @@ add on hardware :
 
 
 Thanks to :
-[WebControlledRobot]https://github.com/JamesPoole/WebControlledRobot
-
-[video streaming with Flask](http://blog.miguelgrinberg.com/post/video-streaming-with-flask) and its follow-up [Flask Video Streaming Revisited](http://blog.miguelgrinberg.com/post/flask-video-streaming-revisited).
+[WebControlledRobot](https://github.com/JamesPoole/WebControlledRobot) by James Poole.
+[video streaming with Flask](http://blog.miguelgrinberg.com/post/video-streaming-with-flask) and its follow-up [Flask Video Streaming Revisited](http://blog.miguelgrinberg.com/post/flask-video-streaming-revisited) by Miguel Grinberg.
