@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-
+import hcsr04 as ultra
+import numpy as np
 from flask import Flask, render_template, Response
 import piconzero as pz
 import time
@@ -36,16 +37,15 @@ def toggleLight():
                 pz.setAllPixels(0,255,0)
         elif (light == 3) :
                 pz.setAllPixels(255,0,0)
-
-
+				
 pz.init()
 pz.setOutputConfig(0,2)
 pz.setOutputConfig(5,3)
 pz.setBrightness(100)
 pz.setOutput(0,angle)
+ultra.init()
 
 app = Flask(__name__)
-
 
 @app.route('/')
 def index():
@@ -56,8 +56,8 @@ def index():
 def gen(camera):
     """Video streaming generator function."""
     while True:
-        frame = camera.get_frame()
-        yield (b'--frame\r\n'
+		frame = camera.get_frame()
+		yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 
