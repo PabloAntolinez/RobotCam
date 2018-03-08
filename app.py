@@ -8,7 +8,7 @@ import time
 # Raspberry Pi camera module (requires picamera package)
 from camera_pi import Camera
 
-angle = 90
+angle = 91
 light = 0
 
 def down():
